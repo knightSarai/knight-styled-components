@@ -8,11 +8,23 @@ import SideBar from './SideBar';
 import Search from './SearchInput';
 
 const Appbar = styled("nav")`
-        display: flex;
-        justify-content:  space-between;
-        background: #1976d2;
-        height: 3rem;
-        align-items: center;
+    display: flex;
+    justify-content:  space-between;
+    background: #1976d2;
+    height: 3rem;
+    align-items: center;
+`;
+const StyledFaBars = styled(FaBars)`
+    margin-left: 2rem;
+    font-size: 2rem;
+    color: #ffff;
+    background: none;
+`
+const Logo = styled.div`
+    margin-left: 2rem;
+    font-size: 2rem;
+    color: #ffff;
+    background: none;
 `;
 const AppBarItems = styled.ul`
     display: flex;
@@ -32,8 +44,10 @@ export default function AppBar() {
     return (
         <Fragment>
             <Appbar>
-                <FaBars onClick={toggleSideBar}/>
-                <StyledLink to="#">Logo</StyledLink>
+                <StyledFaBars onClick={toggleSideBar}/>
+                <Logo>
+                    <StyledLink to="#">Logo</StyledLink>
+                </Logo>
                 <Search/>
                 <AppBarItems>
                     <AppBarItem>
@@ -44,7 +58,7 @@ export default function AppBar() {
                     </AppBarItem>
                 </AppBarItems>  
             </Appbar>
-            <SideBar sideBarOpen={sideBarOpen}/>
+            <SideBar sideBarOpen={sideBarOpen} toggleSideBar={toggleSideBar}/>
         </Fragment>
         
     )
