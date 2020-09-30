@@ -1,10 +1,15 @@
 import React from 'react';
+import AppBar from './AppBar';
+import {Switch, Route} from 'react-router-dom';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <h1>knight</h1>
+      <AppBar/>
+      <Switch>
+        <Route exact path="/"/>
+      </Switch>
     </div>
   );
 }
