@@ -1,32 +1,40 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import  {Link} from 'react-router-dom';
-import {FaBars} from "react-icons/fa";
 import useToggleState from '../../hooks/useToggleState';
 import styled from 'styled-components';
- 
-import SideBar from './SideBar';
-import Search from './SearchInput';
+
+import Burger from './Burger';
+import Search from './SearchInput/';
+import SideBar from './SideBar/';
 
 const Appbar = styled("nav")`
-    display: flex;
-    justify-content:  space-between;
+    position:fixed;
+    width: 100%;
     background: #1976d2;
-    height: 3rem;
+`;
+const AppbarList = styled.ul`
+    margin-top: -18px;
+    display: flex;
+    flex-wrap: wrap;
     align-items: center;
+
+    @media (max-width: ${({ theme }) => theme.mobile}) {
+        flex-direction: column;
+        justify-content: center;
+        margin-left: -30px;
+    };
 `;
-const StyledFaBars = styled(FaBars)`
-    margin-left: 2rem;
+const Logo = styled.li`
+    margin-left: 3rem;
+    padding: 0.5rem;
     font-size: 2rem;
     color: #ffff;
     background: none;
-`
-const Logo = styled.div`
-    margin-left: 2rem;
-    font-size: 2rem;
-    color: #ffff;
-    background: none;
+    @media (max-width: ${({ theme }) => theme.mobile}) {
+        margin: auto;
+    };
 `;
-const AppBarItems = styled.ul`
+const AppBarItems = styled.div`
     display: flex;
     list-style: none;
 `;
@@ -42,13 +50,16 @@ export default function AppBar() {
     const [sideBarOpen, toggleSideBar] = useToggleState();
 
     return (
-        <Fragment>
-            <Appbar>
-                <StyledFaBars onClick={toggleSideBar}/>
-                <Logo>
+        <Appbar>
+            <li className="" style={{width: "60px"}}>
+                    <Burger sideBarOpen={sideBarOpen} toggleSideBar={toggleSideBar}/>
+                    <SideBar sideBarOpen={sideBarOpen} toggleSideBar={toggleSideBar}/>
+            </li>
+            <AppbarList>
+                <Logo className="logo">
                     <StyledLink to="#">Logo</StyledLink>
                 </Logo>
-                <Search/>
+                <Search sideBarOpen={sideBarOpen}/>
                 <AppBarItems>
                     <AppBarItem>
                         <StyledLink to="#">Home</StyledLink>
@@ -57,9 +68,7 @@ export default function AppBar() {
                         <StyledLink to="#">About</StyledLink>
                     </AppBarItem>
                 </AppBarItems>  
-            </Appbar>
-            <SideBar sideBarOpen={sideBarOpen} toggleSideBar={toggleSideBar}/>
-        </Fragment>
-        
+                </AppbarList>
+        </Appbar> 
     )
 }

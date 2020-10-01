@@ -13,4 +13,9 @@ export const sideBareData = [
         path: "/about",
         icon: <IoIcons.IoIosPaper/>,
     },
+    {
+        title: "Contact",
+        path: "/contact",
+        icon: <IoIcons.IoIosPaper/>,
+    },
 ];
