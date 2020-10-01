@@ -10,7 +10,7 @@ export const SideBarStyled = styled("nav")`
     color: ${({theme}) => theme.text.primary};
     border-right: 1px solid #3333;
     height:100vh;
-    width: 250px;
+    width: 230px;
     position: absolute;
     top: 0;
     left:0;
@@ -21,10 +21,15 @@ export const SideBarStyled = styled("nav")`
     };
 `;
 export const NavItems = styled("ul")`
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
     margin-top: 120px;
 `;
 export const NavItem = styled("li")`
     background: inherit;
+    font-size: 1.6rem;
 `;
 export const StyledLink = styled(Link)`
     text-transform: uppercase;
