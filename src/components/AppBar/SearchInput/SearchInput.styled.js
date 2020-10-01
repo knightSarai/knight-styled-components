@@ -12,17 +12,12 @@ export const SearchWrapper = styled.li`
     margin: auto;
     height:40px;
     width: 240px;
-    display: flex;
+    display: inline-flex;
     background: #f2f2f2;
     border-radius: 5px;
-    /* @media (max-width: ${({ theme }) => theme.mobile}) {
-        display: ${({sideBarOpen}) => sideBarOpen ? 'block' : 'none'};
-        position: absolute;
-        z-index:15;
-        width: 100vw;
-        margin-top: 110px;  */
-    /* }; */
-
+    @media (max-width: ${({ theme }) => theme.mobile}) {
+        display: none;
+    };
 `;
 export const Input = styled.input`
     height:100%;
@@ -30,7 +25,9 @@ export const Input = styled.input`
     border: none;
     outline: none;
     padding: 0 10px;
-    border-radius: 0 5px 5px 0;
+    border-radius:  5px 0px 0px 5px;
+    border: 1px solid #cccccc;
+    border-right: 0;
     color: #000;
     font-size: 16px;
 `;

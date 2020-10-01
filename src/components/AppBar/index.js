@@ -9,24 +9,27 @@ import SideBar from './SideBar/';
 
 const Appbar = styled("nav")`
     position:fixed;
+    top:0;
+    left: 0;
+    right:0;
+    min-height: 64px;
     width: 100%;
-    background: #1976d2;
+    background: #ffff;
 `;
 const AppbarList = styled.ul`
-    margin-top: -18px;
+    margin-left: -30px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
 
-    @media (max-width: ${({ theme }) => theme.mobile}) {
+    /* @media (max-width: ${({ theme }) => theme.mobile}) {
         flex-direction: column;
         justify-content: center;
-        margin-left: -30px;
-    };
+    }; */
 `;
 const Logo = styled.li`
-    margin-left: 3rem;
-    padding: 0.5rem;
+    margin-left: 5px;
+    padding: 0 5px;
     font-size: 2rem;
     color: #ffff;
     background: none;
@@ -39,11 +42,11 @@ const AppBarItems = styled.div`
     list-style: none;
 `;
 const AppBarItem = styled.li`
-    padding: 1rem;
+    padding: 0 5px;
 `;
 const StyledLink = styled(Link)`
     text-decoration: none;
-    color: #ffff;
+    color:  ${({ theme }) => theme.primary.light};
 `;
 
 export default function AppBar() {
@@ -51,13 +54,13 @@ export default function AppBar() {
 
     return (
         <Appbar>
-            <li className="" style={{width: "60px"}}>
-                    <Burger sideBarOpen={sideBarOpen} toggleSideBar={toggleSideBar}/>
-                    <SideBar sideBarOpen={sideBarOpen} toggleSideBar={toggleSideBar}/>
-            </li>
             <AppbarList>
+                <li className="" style={{width: "60px"}}>
+                        <Burger sideBarOpen={sideBarOpen} toggleSideBar={toggleSideBar}/>
+                        <SideBar sideBarOpen={sideBarOpen} toggleSideBar={toggleSideBar}/>
+                </li>
                 <Logo className="logo">
-                    <StyledLink to="#">Logo</StyledLink>
+                    <StyledLink to="#">KnighTrition</StyledLink>
                 </Logo>
                 <Search sideBarOpen={sideBarOpen}/>
                 <AppBarItems>

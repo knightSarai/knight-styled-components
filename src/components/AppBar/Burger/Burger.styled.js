@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
 export const StyledBurger = styled.button`
-  position: absolute;
-  top: 10px;
+  position: relative;
+  left: 0px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  width: 2rem;
-  height: 2rem;
+  width: 30px;
+  height: 30px;
   background: transparent;
   border: none;
   cursor: pointer;
@@ -17,11 +17,15 @@ export const StyledBurger = styled.button`
   }
   
   div {
-    width: 2rem;
-    height: 0.25rem;
-    background: ${({ theme, sideBarOpen }) => sideBarOpen? theme.bg.dark : theme.bg.light};
+    width: 30px;
+    height: 4px;
+    background: ${({ theme }) => theme.primary.light };
     border-radius: 10px;
     transition: all 0.3s linear;
     transform-origin: 1px;
   }
+
+  /* @media (max-width: ${({ theme }) => theme.mobile}) {
+        position: fixed;
+    }; */
 `;

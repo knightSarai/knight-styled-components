@@ -6,7 +6,7 @@ export const SideBarStyled = styled("nav")`
     flex-direction: column;
     justify-content: start;
     font-size: 1rem;
-    background: ${({theme}) => theme.bg.light};
+    background: #ffff;
     color: ${({theme}) => theme.text.primary};
     border-right: 1px solid #3333;
     height:100vh;

@@ -12,5 +12,5 @@ export const theme = new (function() {
         primary: this.primary.light,
         white: "#ffff"
     };
-    this.mobile = '576px';
+    this.mobile = '625px';
 })();

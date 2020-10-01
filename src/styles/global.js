@@ -9,7 +9,7 @@ export const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
   }
   body {
-    background: ${({ theme }) => theme.bg.dark};
+    background: ${({ theme }) => theme.bg.light};
     color: ${({ theme }) => theme.primaryLight};
     /* text-rendering: optimizeLegibility; */
     font-family: 'Roboto';  
