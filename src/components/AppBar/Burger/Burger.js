@@ -3,7 +3,7 @@ import { StyledBurger } from './Burger.styled';
 
 const Burger = ({sideBarOpen, toggleSideBar}) => {
   return (
-    <StyledBurger sideBarOpen={sideBarOpen} onClick={toggleSideBar}>
+    <StyledBurger open={sideBarOpen} onClick={toggleSideBar}>
       <div />
       <div />
       <div />

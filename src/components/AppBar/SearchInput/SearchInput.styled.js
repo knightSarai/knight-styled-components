@@ -1,8 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import {FaSearch} from "react-icons/fa";
-/* this component will be shown on the appbar in largScreen,
-and wil be shown on the sidebar in the mobile mood */
+
 export const icon = ({className, children}) => (
     <FaSearch className={className || ""} as="span">
         {children}
@@ -16,7 +15,7 @@ export const SearchWrapper = styled.li`
     background: #f2f2f2;
     border-radius: 5px;
     @media (max-width: ${({ theme }) => theme.mobile}) {
-        display: none;
+        margin-top: 0.5rem;
     };
 `;
 export const Input = styled.input`

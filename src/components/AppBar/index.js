@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import { useOnClickOutside } from '../../hooks/useOnClickOutSide';
 import  {Link} from 'react-router-dom';
 import useToggleState from '../../hooks/useToggleState';
 import styled from 'styled-components';
@@ -17,15 +18,12 @@ const Appbar = styled("nav")`
     background: #ffff;
 `;
 const AppbarList = styled.ul`
-    margin-left: -30px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-
-    /* @media (max-width: ${({ theme }) => theme.mobile}) {
+    @media (max-width: ${({ theme }) => theme.mobile}) {
         flex-direction: column;
-        justify-content: center;
-    }; */
+    };
 `;
 const Logo = styled.li`
     margin-left: 5px;
@@ -40,9 +38,15 @@ const Logo = styled.li`
 const AppBarItems = styled.div`
     display: flex;
     list-style: none;
+    justify-content: space-between;
+    margin: auto;
+
 `;
 const AppBarItem = styled.li`
     padding: 0 5px;
+    @media (max-width: ${({ theme }) => theme.mobile}) {
+        margin-top: 0.5rem;
+    };
 `;
 const StyledLink = styled(Link)`
     text-decoration: none;
@@ -51,18 +55,18 @@ const StyledLink = styled(Link)`
 
 export default function AppBar() {
     const [sideBarOpen, toggleSideBar] = useToggleState();
-
+    const node  = useRef();
+    useOnClickOutside(node, () => toggleSideBar(false));
     return (
         <Appbar>
             <AppbarList>
-                <li className="" style={{width: "60px"}}>
+                <li className="" style={{width: "60px"}} ref={node}>
                         <Burger sideBarOpen={sideBarOpen} toggleSideBar={toggleSideBar}/>
                         <SideBar sideBarOpen={sideBarOpen} toggleSideBar={toggleSideBar}/>
                 </li>
                 <Logo className="logo">
                     <StyledLink to="#">KnighTrition</StyledLink>
                 </Logo>
-                <Search sideBarOpen={sideBarOpen}/>
                 <AppBarItems>
                     <AppBarItem>
                         <StyledLink to="#">Home</StyledLink>
@@ -70,7 +74,11 @@ export default function AppBar() {
                     <AppBarItem>
                         <StyledLink to="#">About</StyledLink>
                     </AppBarItem>
+                    <AppBarItem>
+                        <StyledLink to="#">Blog</StyledLink>
+                    </AppBarItem>
                 </AppBarItems>  
+                <Search sideBarOpen={sideBarOpen}/>
                 </AppbarList>
         </Appbar> 
     )

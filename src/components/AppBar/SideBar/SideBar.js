@@ -1,5 +1,4 @@
 import React from 'react';
-import {IoMdClose} from "react-icons/io";
 import {sideBareData} from './sideBarData';
 import {NavItems, NavItem, StyledLink, Divider, SideBarStyled} from './SideBar.styled';
 
