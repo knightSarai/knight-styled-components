@@ -43,7 +43,7 @@ const AppBarItems = styled.div`
 
 `;
 const AppBarItem = styled.li`
-    padding: 0 5px;
+    padding: 0 0.7rem;
     @media (max-width: ${({ theme }) => theme.mobile}) {
         margin-top: 0.5rem;
     };
