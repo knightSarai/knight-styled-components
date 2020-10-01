@@ -18,6 +18,7 @@ export const SideBarStyled = styled("nav")`
     transform: ${({ sideBarOpen }) => sideBarOpen ? 'translateX(0)' : 'translateX(-100%)'};
     @media (max-width: ${({ theme }) => theme.mobile}) {
         width: 100%;
+        align-items: center;
     };
 `;
 export const NavItems = styled("ul")`
@@ -29,7 +30,10 @@ export const NavItems = styled("ul")`
 `;
 export const NavItem = styled("li")`
     background: inherit;
-    font-size: 1.6rem;
+    font-size: 1.3rem;
+    a {
+        padding: 0.7rem;
+    }
 `;
 export const StyledLink = styled(Link)`
     text-transform: uppercase;

@@ -5,11 +5,11 @@ import {NavItems, NavItem, StyledLink, Divider, SideBarStyled} from './SideBar.s
 export default function SideBar({sideBarOpen}) {
     const renderedNavItems = sideBareData.map((item, idx) => (
         <NavItem key={idx}>
-                {item.icon}
-                <StyledLink to={item.path} >
-                    {item.title}
-                </StyledLink>
-               { !(idx === sideBareData.length - 1) && <Divider/>}
+            {item.icon}
+            <StyledLink to={item.path} >
+                {item.title}
+            </StyledLink>
+             {!(idx === sideBareData.length - 1) && <Divider/>}
         </NavItem>
     ))
     const renderdComponent = (

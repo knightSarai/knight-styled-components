@@ -65,7 +65,7 @@ export default function AppBar() {
                         <SideBar sideBarOpen={sideBarOpen} toggleSideBar={toggleSideBar}/>
                 </li>
                 <Logo className="logo">
-                    <StyledLink to="#">KnighTrition</StyledLink>
+                    <StyledLink to="#">KnighTritions</StyledLink>
                 </Logo>
                 <AppBarItems>
                     <AppBarItem>
