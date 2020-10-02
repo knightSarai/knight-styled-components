@@ -1,11 +1,13 @@
 import { useEffect } from 'react';
 
-export const useOnClickOutside = (ref, handler) => {
+export const useOnClickOutside = (open, ref, handler) => {
   useEffect(() => {
     const listener = event => {
-      if (!ref.current || ref.current.contains(event.target)) {
+      if (!open || !ref.current || ref.current.contains(event.target)) {
         return;
       }
+      event.stopPropagation();
+      console.log(ref);
       handler(event);
     };
     document.addEventListener('mousedown', listener);
@@ -13,6 +15,6 @@ export const useOnClickOutside = (ref, handler) => {
       document.removeEventListener('mousedown', listener);
     };
   },
-  [ref, handler],
+  [open, ref, handler],
   );
 };

@@ -56,7 +56,7 @@ const StyledLink = styled(Link)`
 export default function AppBar() {
     const [sideBarOpen, toggleSideBar] = useToggleState();
     const node  = useRef();
-    useOnClickOutside(node, () => toggleSideBar(false));
+    useOnClickOutside(sideBarOpen, node, () => toggleSideBar(false));
     return (
         <Appbar>
             <AppbarList>
