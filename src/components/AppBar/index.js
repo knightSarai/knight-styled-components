@@ -9,25 +9,24 @@ import Search from './SearchInput/';
 import SideBar from './SideBar/';
 
 const Appbar = styled("nav")`
-    position:fixed;
-    top:0;
-    left: 0;
-    right:0;
     min-height: 64px;
-    width: 100%;
     background: #ffff;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+
 `;
 const AppbarList = styled.ul`
     display: flex;
     flex-wrap: wrap;
+    width: 100%;
     align-items: center;
     @media (max-width: ${({ theme }) => theme.mobile}) {
         flex-direction: column;
     };
 `;
 const Logo = styled.li`
-    margin-left: 5px;
-    padding: 0 5px;
+    margin-left: 20px;
     font-size: 2rem;
     color: #ffff;
     background: none;
@@ -44,6 +43,7 @@ const AppBarItems = styled.div`
 `;
 const AppBarItem = styled.li`
     padding: 0 0.7rem;
+    margin: 0 0.1rem;
     @media (max-width: ${({ theme }) => theme.mobile}) {
         margin-top: 0.5rem;
     };
@@ -60,7 +60,7 @@ export default function AppBar() {
     return (
         <Appbar>
             <AppbarList>
-                <li className="" style={{width: "60px"}} ref={node}>
+                <li ref={node}>
                         <Burger sideBarOpen={sideBarOpen} toggleSideBar={toggleSideBar}/>
                         <SideBar sideBarOpen={sideBarOpen} toggleSideBar={toggleSideBar}/>
                 </li>

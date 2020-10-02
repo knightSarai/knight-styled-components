@@ -6,6 +6,7 @@ export const StyledBurger = styled.button`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  margin: 10px;
   width: 30px;
   height: 30px;
   background: transparent;

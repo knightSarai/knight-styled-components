@@ -7,8 +7,6 @@ import {theme} from '../styles/theme';
 import AppBar from './AppBar';
 import Slider from './Slider'
 
-import './App.css';
-
 function App() {
   return (
     <ThemeProvider theme={theme}>
