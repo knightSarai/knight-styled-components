@@ -4,7 +4,7 @@ import  {Link} from 'react-router-dom';
 export const SideBarStyled = styled("nav")`
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    align-items: flex-start;
     font-size: 1rem;
     background: #ffff;
     color: ${({theme}) => theme.text.primary};
@@ -12,6 +12,7 @@ export const SideBarStyled = styled("nav")`
     height:100vh;
     width: 230px;
     position: absolute;
+    z-index: 9;
     top: 0;
     left:0;
     transition: transform 0.3s ease-in-out;
@@ -22,17 +23,22 @@ export const SideBarStyled = styled("nav")`
     };
 `;
 export const NavItems = styled("ul")`
-    display: flex;
+    /* display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: flex-start;
+    align-items: flex-start; */
     margin-top: 120px;
+    width: 100%;
 `;
 export const NavItem = styled("li")`
     background: inherit;
     font-size: 1.3rem;
+    margin-bottom: 0.5rem; 
     a {
         padding: 0.7rem;
+    }
+    svg {
+        margin: 0 1rem;
     }
 `;
 export const StyledLink = styled(Link)`

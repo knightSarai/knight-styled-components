@@ -9,13 +9,13 @@ export default function SideBar({sideBarOpen}) {
             <StyledLink to={item.path} >
                 {item.title}
             </StyledLink>
-             {!(idx === sideBareData.length - 1) && <Divider/>}
         </NavItem>
     ))
     const renderdComponent = (
         <SideBarStyled sideBarOpen={sideBarOpen}>
             <NavItems>
                 {renderedNavItems}
+                <Divider/>
             </NavItems>
         </SideBarStyled>  
     );
