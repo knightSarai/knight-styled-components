@@ -3,9 +3,8 @@ import {v4 as uuid} from 'uuid';
 import {SliderContainer} from './Slider.styled';
 import SliderContent from '../SliderContent';
 import Slide from '../Slide';
-
-/*@function Slider
- */
+import Arrow from '../Arrows'
+import Dots from '../Dots';
 
 const Slider = () => {
   const slideImages = [
@@ -16,27 +15,64 @@ const Slider = () => {
   ]
   const [width, setWidth] = useState();
   const [state, setState] = useState({
+    activeIndex:0,
     translate: 0,
     transition: 0.45
   })
-  const { translate, transition } = state;
+  const { activeIndex, translate, transition } = state;
+
   useEffect(()=>{
     setWidth(window.innerWidth);
   },[setWidth])
 
+  const nextSlide = () => {
+    if (activeIndex === slideImages.length - 1) {
+      return setState({
+        ...state,
+        translate: 0,
+        activeIndex: 0
+      })
+    }
+
+    setState({
+      ...state,
+      activeIndex: activeIndex + 1,
+      translate: (activeIndex + 1) * width
+    })
+  }
+
+  const prevSlide = () => {
+    if (activeIndex === 0) {
+      return setState({
+        ...state,
+        translate: (slideImages.length - 1) * width,
+        activeIndex: slideImages.length - 1
+      })
+    }
+
+    setState({
+      ...state,
+      activeIndex: activeIndex - 1,
+      translate: (activeIndex - 1) * width
+    })
+  }
+
   const renderedSlides = slideImages.map((img) => (
     <Slide key={uuid()} content={img}/>
-  ))
-  console.log(width * slideImages.length);
+  ));
+
   return (
     <SliderContainer>
       <SliderContent
         translate={translate}
         transition={transition}
-        width={width * slideImages.length}
+        width={`${width * slideImages.length}`}
       >
         {renderedSlides}
       </SliderContent>
+      <Arrow direction="left" handleClick={prevSlide}/>
+      <Arrow direction="right" handleClick={nextSlide}/>
+      <Dots slides={slideImages} activeIndex={activeIndex} />
     </SliderContainer>
     )
 
