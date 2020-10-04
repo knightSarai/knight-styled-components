@@ -19,4 +19,8 @@ export const GlobalStyles = createGlobalStyle`
   ul{
       list-style: none;
   }
+  img{
+    width: 100%;
+    height: 100%;
+}
 `;

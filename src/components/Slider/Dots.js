@@ -18,9 +18,9 @@ const StyledDots = styled.div`
         justify-content: center;
 `;
 
-export default function Dots({ slides, activeIndex }) {
+export default function Dots({ slides, activeSlide }) {
     const renderedDots = slides.map((slide, i) => (
-        <Dot key={slide} active={activeIndex === i}/>
+        <Dot key={slide} active={activeSlide === i}/>
     ))
     return (
         <StyledDots>

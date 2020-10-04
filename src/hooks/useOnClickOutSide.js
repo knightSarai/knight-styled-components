@@ -7,7 +7,6 @@ export const useOnClickOutside = (open, ref, handler) => {
         return;
       }
       event.stopPropagation();
-      console.log(ref);
       handler(event);
     };
     document.addEventListener('mousedown', listener);
