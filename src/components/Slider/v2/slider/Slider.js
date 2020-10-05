@@ -1,4 +1,4 @@
-import React, {Component, createRef} from 'react';
+import React, {Component} from 'react';
 import {Container} from './Slider.styled';
 import renderSlides from './renderSlides'
 import Slides from '../Slides';
@@ -9,7 +9,6 @@ export  class Slider extends Component{
     constructor(props){
         super(props);
         this.state={
-            counter:1,
             autoPlayTime:2,
             size: NaN,
             transform: '',
@@ -17,13 +16,17 @@ export  class Slider extends Component{
         }
         this.autoPlay = {};
         this.imgsRefs = [];
+        this.counter = 1;
+        this.renderedSlides = (renderSlides(this.props.slideImages, this.imgsRefs));
     }
+    // gitWidth = (element) => {
+
+    // }
     setTransformAndTransition = (transition) => {
-        // console.log(transition);
-        let {size, counter} = this.state;
+        let {size} = this.state;
         this.setState({
             ...this.state,
-            transform: `translateX(-${size * counter}px)`,
+            transform: `translateX(-${size * this.counter}px)`,
             transition
         });
     }
@@ -34,53 +37,61 @@ export  class Slider extends Component{
         this.setState({
             ...this.state,
             size: e.target.clientWidth
+        }, () => {
+            this.setTransformAndTransition('none');
         });
-        this.setTransformAndTransition('none');
+        console.log(e.target, this.state.size);
+        
     }
     nextSlide = () => {
-        const {slideImages} = this.props;
-        let {counter} = this.state;
-        // stopAutoPlay();
-        if (counter >= slideImages.length) return;
-        counter++;
-        this.setState({...this.state, counter}, () => this.afterBtnClick())
+        this.stopAutoPlay();
+        if (this.counter >= this.imgsRefs.length  -1) return;
+        this.setState({
+            ...this.state,
+            size: this.imgsRefs[this.counter].clientWidth
+        }, () => {
+            this.counter++;
+            this.afterBtnClick()
+        })
+        
     }
     prevSlide = () => {
-        let {counter} = this.state;
-        // stopAutoPlay();
-        if (counter <= 0) return;
-        counter--;
-        this.setState({...this.state, counter}, () => this.afterBtnClick())
+        this.stopAutoPlay();
+        if (this.counter <= 0) return;
+        this.counter--;
+        this.afterBtnClick()
     }
     afterBtnClick = () => {
         this.setTransformAndTransition('transform 0.4s ease-in-out');
-        // startAutoPlay();
+        this.startAutoPlay();
     }
     componentDidMount() {
-        this.imgsRefs[0].addEventListener('load', this.onLoad)
+        this.imgsRefs[this.counter].addEventListener('load', this.onLoad);
+        this.startAutoPlay()
     }
     transitionEnd = (num) => {
-        let {counter} = this.state;
-        const {slideImages} = this.props;
-        counter = slideImages.length - num;
+        this.counter = this.imgsRefs.length - num;
         this.setState({...this.state, transition: "none"}, () => {
-            this.setState({...this.state, counter}, () => {
-                this.setState({...this.state, transform: `translateX(-${this.state.size * this.state.counter}px)`})
+            this.setState({
+                ...this.state,
+                transform: `translateX(-${this.state.size * this.counter}px)`
             })
         })
     }
     handletranstionEnd = () => {
-        let {counter} = this.state;
-        console.log(this.imgsRefs[counter]);
-        this.imgsRefs[counter].id === "last-clone" && this.transitionEnd(2);
-        this.imgsRefs[counter].id  === "first-clone" && this.transitionEnd(counter);
+        this.imgsRefs[this.counter].id === "last-clone" && this.transitionEnd(2);
+        this.imgsRefs[this.counter].id  === "first-clone" && this.transitionEnd(this.counter);
     }
-    
+    startAutoPlay = () => {
+        this.autoPlay = setInterval(this.nextSlide, this.state.autoPlayTime * 1000)
+    }
+    stopAutoPlay = () => {
+        clearInterval(this.autoPlay)
+    }
     render() {
         const {slideImages} = this.props;
         const {transform, transition} = this.state;
-        const renderedSlides = renderSlides(slideImages, this.imgsRefs);
-        console.log(this.state);
+        console.log(this.state.size);
         return (
             <Container>
                 <Slides 
@@ -88,7 +99,7 @@ export  class Slider extends Component{
                     transition={transition}
                     onTransitionEnd={this.handletranstionEnd}
                 >
-                {renderedSlides}
+                {this.renderedSlides}
                 </Slides>
                 <Arrows direction="left" handleClick={this.prevSlide}/>
                 <Arrows direction="right" handleClick={this.nextSlide}/>

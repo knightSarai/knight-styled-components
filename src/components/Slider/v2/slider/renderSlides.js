@@ -1,13 +1,12 @@
 import React from 'react';
 import {v4 as uuid} from 'uuid';
-
-
+import Slide from '../Slide'
 
 export default (slideImages, imgsRefs) => slideImages.map((img, idx) => {
     const setRef = element => {
         imgsRefs.push(element);
     }
-        if (idx ===0) {
+        if (idx === 0) {
             return (
             <React.Fragment key={uuid()}>
                 <img id="last-clone" ref={setRef} key={uuid()}  src={slideImages[slideImages.length - 1]} alt={`img-last-clone`}/>

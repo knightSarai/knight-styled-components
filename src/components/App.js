@@ -5,7 +5,9 @@ import {GlobalStyles} from '../styles/global';
 import {theme} from '../styles/theme';
 
 import AppBar from './AppBar';
-import {Slider} from './Slider/v2';
+import {Slider} from './Slider/';
+// import {Slider} from './Slider/v2';
+
 
 function App() {
   /*pass the src in the array */
