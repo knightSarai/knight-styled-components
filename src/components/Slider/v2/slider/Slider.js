@@ -103,7 +103,7 @@ export  class Slider extends Component{
                 </Slides>
                 <Arrows direction="left" handleClick={this.prevSlide}/>
                 <Arrows direction="right" handleClick={this.nextSlide}/>
-                <Dots slides={slideImages}/>
+                <Dots slides={slideImages} activeSlide={this.counter - 1}/>
         </Container>
         )
     }

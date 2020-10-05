@@ -18,15 +18,10 @@ export const SideBarStyled = styled("nav")`
     transition: transform 0.3s ease-in-out;
     transform: ${({ sideBarOpen }) => sideBarOpen ? 'translateX(0)' : 'translateX(-100%)'};
     @media (max-width: ${({ theme }) => theme.mobile}) {
-        width: 100%;
-        align-items: center;
+        width: 60%;
     };
 `;
 export const NavItems = styled("ul")`
-    /* display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start; */
     margin-top: 120px;
     width: 100%;
 `;

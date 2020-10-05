@@ -2,8 +2,7 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
     position: relative;
-    width: 100%;
-    margin: auto;
-    border: 5px solid #000;
+    width: 60%;
+    margin: 2rem auto;
     overflow: hidden;
 `;
