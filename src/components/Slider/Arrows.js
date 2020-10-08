@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import {AiOutlineArrowRight as Right, AiOutlineArrowLeft as Left} from 'react-icons/ai';
 
-const StyledArow = styled.div`
+const StyledArrow = styled.div`
     display: flex;
       position: absolute;
       top: 50%;
@@ -28,11 +28,11 @@ const StyledArow = styled.div`
 
 export default function Arrows({direction, handleClick}) {
     return (
-        <StyledArow
+        <StyledArrow
             onClick={handleClick}
             direction={direction}
         >
             {direction === 'right' ? <Right/> : <Left/>} 
-        </StyledArow>
+        </StyledArrow>
     )
 }
