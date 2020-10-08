@@ -21,7 +21,7 @@ const StyledDots = styled.div`
 export default function Dots({ slides, activeSlide }) {
     const renderedDots = slides.map((slide, i) => (
         <Dot key={slide} active={activeSlide === i}/>
-    ))
+    ));
     return (
         <StyledDots>
          {renderedDots}
